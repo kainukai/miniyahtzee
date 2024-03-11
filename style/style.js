@@ -12,9 +12,10 @@ export default StyleSheet.create({
     flexDirection: 'row',
   },
   footer: {
-    marginTop: 20,
+    marginTop: 40,
     backgroundColor: 'skyblue',
-    flexDirection: 'row'
+    flexDirection: 'row',
+    
   },
   title: {
     color: '#fff',
@@ -41,10 +42,20 @@ export default StyleSheet.create({
     backgroundColor: '#fff',
     textAlign: 'center',
     justifyContent: 'center',
-    fontSize: 20,
+    fontSize: 15,
     marginTop: 10,
     margin: 10
   },
+
+  gamerule: {
+    backgroundColor: '#fff',
+    textAlign: 'center',
+    justifyContent: 'center',
+    fontSize: 25,
+    marginTop: 10,
+    margin: 10
+  },
+
   row: {
     marginTop: 20,
     padding: 10
