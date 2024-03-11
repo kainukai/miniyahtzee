@@ -23,7 +23,6 @@ export default function Gameboard({ navigation, route }) {
   const [gameEndStatus, setGameEndStatus] = useState(false);
   const [showDiceIcon, setShowDiceIcon] = useState(true);
 
-
   // If dices are selected or not
   const [selectedDices, setSelectedDices] =
     useState(new Array(NBR_OF_DICES).fill(false));
@@ -38,14 +37,13 @@ export default function Gameboard({ navigation, route }) {
   const [dicePointsTotal, setDicePointsTotal] =
     useState(new Array(MAX_SPOT).fill(0));
 
-  const [playerName,setPlayerName] = useState("");
+  const [playerName, setPlayerName] = useState("");
 
   useEffect(() => {
     if (playerName === "" && route.params?.player) {
       setPlayerName(route.params.player);
     }
   }, [])
-
 
   const row = [];
   for (let dice = 0; dice < NBR_OF_DICES; dice++) {
@@ -98,61 +96,84 @@ export default function Gameboard({ navigation, route }) {
 
   const selectDice = (i) => {
     let dices = [...selectedDices];
-    dices[i] = selectedDices[i] ? false : true;
+    dices[i] = !selectedDices[i]; // Toggle the selected status of the dice
     setSelectedDices(dices);
+    if (dices.every(x => x)) {
+
+    }
   }
 
   function getDiceColor(i) {
-    return selectedDices[i] ? "black" : "steelblue"
+    return selectedDices[i] ? "red" : "black"
   }
 
   function getDicePointsColor(i) {
-    return selectedDicePoints[i] ? "black" : "steelblue"
+    return selectedDicePoints[i] ? "red" : "black"
   }
 
   const selectDicePoints = (i) => {
     if (nbrOfThrowsLeft === 0) {
-      let selected = [...selectedDices];
       let selectedPoints = [...selectedDicePoints];
       let points = [...dicePointsTotal];
-      if (!selectedPoints[i]){
-      selectedPoints[i] = true;
-      let nbrOfDices = 
-        diceSpots.reduce
-        ((total, x) => (x === (i + 1) ? total + 1 : total), 0);
-      points[i] = nbrOfDices * (i + 1);
-      setDicePointsTotal(points);
-      setSelectedDicePoints(selectedPoints);
-      setNbrOfThrowsLeft(NBR_OF_THROWS);
-      return points[i];
+      
+      if (!selectedPoints[i]) {
+        selectedPoints[i] = true;
+        let nbrOfDices = diceSpots.reduce((total, x) => (x === (i + 1) ? total + 1 : total), 0);
+        points[i] = nbrOfDices * (i + 1);
+        setDicePointsTotal(points);
+        setSelectedDicePoints(selectedPoints);
+        
+        // Check if all points have been selected
+        if (selectedPoints.every(x => x)) {
+          setGameEndStatus(true);
+          setStatus("Game over. All points selected.");
+          
+        }
+        
+        setNbrOfThrowsLeft(NBR_OF_THROWS);
+        return points[i];
+      } else {
+        setStatus("You already selected points for " + (i + 1));
+      } 
+    } else {
+      setStatus("Throw " + NBR_OF_THROWS + " times before setting points.");
     }
-  else {
-    setStatus("You already selected points for " +(i + 1));
-    } 
   }
-  else {
-    setStatus("Throw " + NBR_OF_THROWS + " times before setting points.")
-  }
-}
 
 
   const throwDices = () => {
-    setShowDiceIcon(false);
-    let spots = [...diceSpots];
-    for (let i = 0; i < NBR_OF_DICES; i++) {
-      if (!selectedDices[i]) {
-        let randomNumber = Math.floor(Math.random() * MAX_SPOT + 1);
-        spots[i] = randomNumber;
-        board[i] = 'dice-' + randomNumber;
+    if (gameEndStatus) {
+      // Reset game states if the game has ended
+      setGameEndStatus(false);
+      setSelectedDices(new Array(NBR_OF_DICES).fill(false));
+      setDiceSpots(new Array(NBR_OF_DICES).fill(0));
+      setSelectedDicePoints(new Array(MAX_SPOT).fill(false));
+      setDicePointsTotal(new Array(MAX_SPOT).fill(0));
+      setStatus("Throw Dices.");
+      board = [];
+      setNbrOfThrowsLeft(NBR_OF_THROWS); // Reset throws left
+      setShowDiceIcon(true); // Show the dice icon again
+    } else {
+      if (nbrOfThrowsLeft > 0) { // Check if throws left is greater than 0
+        setShowDiceIcon(false); // Hide the dice icon
+        let spots = [...diceSpots];
+        for (let i = 0; i < NBR_OF_DICES; i++) {
+          if (!selectedDices[i]) {
+            let randomNumber = Math.floor(Math.random() * MAX_SPOT + 1);
+            spots[i] = randomNumber;
+            board[i] = 'dice-' + randomNumber;
+          }
+        }
+        setDiceSpots(spots);
+        setNbrOfThrowsLeft(nbrOfThrowsLeft - 1);
       }
     }
-    setDiceSpots(spots);
-    setNbrOfThrowsLeft(nbrOfThrowsLeft-1);
-  }
+  };
 
   function getSpotTotal(i) {
     return dicePointsTotal[i];
   }
+
 
   return (
     <>
@@ -165,7 +186,7 @@ export default function Gameboard({ navigation, route }) {
           <FontAwesome5
             name="dice"
             size={90}
-            color="steelblue"
+            color="red"
             style={styles.information}
           />
         )}
@@ -174,11 +195,10 @@ export default function Gameboard({ navigation, route }) {
 
       <Pressable style={styles.button}
         onPress={() => throwDices()}>
-        <Text>THROW DICES</Text>
+        <Text style={styles.buttonText}>THROW DICES</Text>
       </Pressable>
 
       <Text style={styles.gametotal}> Total: {dicePointsTotal.reduce((acc, curr) => acc + curr, 0)} </Text>
-      <Text style={styles.gamebonus}> You are {BONUS_POINTS} points away from bonus.</Text>
 
       <Container>
         <Row>{pointsRow}</Row>

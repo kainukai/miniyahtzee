@@ -1,21 +1,27 @@
 import { StyleSheet } from 'react-native';
+import Metrics from "../style/Metrics";
+import { Font } from 'expo-font';
+
 
 export default StyleSheet.create({
   container: {
+    fontFamily: "comic-sans",
     flex: 1,
     backgroundColor: '#fff'
   },
   header: {
     marginTop: 0,
     marginBottom: 0,
-    backgroundColor: 'skyblue',
+    backgroundColor: 'red',
     flexDirection: 'row',
+    fontFamily: "comic-sans",
   },
+
   footer: {
     marginTop: 25,
-    backgroundColor: 'skyblue',
+    backgroundColor: 'red',
     flexDirection: 'row',
-    
+    fontFamily: "comic-sans",
   },
   title: {
     color: '#fff',
@@ -24,6 +30,7 @@ export default StyleSheet.create({
     fontSize: 23,
     textAlign: 'center',
     margin: 10,
+    fontFamily: "comic-sans",
   },
   author: {
     color: '#fff',
@@ -32,11 +39,13 @@ export default StyleSheet.create({
     fontSize: 15,
     textAlign: 'center',
     margin: 10,
+    fontFamily: "comic-sans",
   },
   gameboard: {
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    fontFamily: "comic-sans",
   },
   gameinfo: {
     backgroundColor: '#fff',
@@ -44,7 +53,9 @@ export default StyleSheet.create({
     justifyContent: 'center',
     fontSize: 15,
     marginTop: 10,
-    margin: 15
+    margin: 15,
+    fontFamily: "comic-sans",
+    
   },
 
   gamerule: {
@@ -54,7 +65,7 @@ export default StyleSheet.create({
     fontSize: 25,
     marginTop: 10,
     margin: 10,
-    
+    fontFamily: "comic-sans",
   },
 
   gametext: {
@@ -63,7 +74,8 @@ export default StyleSheet.create({
     justifyContent: 'center',
     fontSize: 20,
     marginTop: 10,
-    margin: 15
+    margin: 15,
+    fontFamily: "comic-sans",
   },
 
   gametotal: {
@@ -72,7 +84,8 @@ export default StyleSheet.create({
     justifyContent: 'center',
     fontSize: 25,
     marginTop: 10,
-    margin: 15
+    margin: 15,
+    fontFamily: "comic-sans",
   },
 
   gamebonus: {
@@ -81,7 +94,8 @@ export default StyleSheet.create({
     justifyContent: 'center',
     fontSize: 15,
     marginTop: 10,
-    margin: 25
+    margin: 25,
+    fontFamily: "comic-sans",
   },
 
   playerName: {
@@ -90,7 +104,8 @@ export default StyleSheet.create({
     justifyContent: 'center',
     fontSize: 20,
     marginTop: 10,
-    margin: 0
+    margin: 0,
+    fontFamily: "comic-sans",
   },
 
   row: {
@@ -104,21 +119,25 @@ export default StyleSheet.create({
     margin: 30,
     flexDirection: "row",
     padding: 10,
-    backgroundColor: "#73CED6",
+    backgroundColor: "red",
     width: 330,
     borderRadius: 15,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    fontFamily: "comic-sans",
+    
     
   },
   buttonText: {
-    color:"#2B2B52",
-    fontSize: 20
+    color:"white",
+    fontSize: 20,
+    fontFamily: "comic-sans",
   },
   information:{
     backgroundColor: '#fff',
     textAlign: 'center',
     justifyContent: 'center',
     paddingBottom: 20,
+    fontFamily: "comic-sans",
   }
 });

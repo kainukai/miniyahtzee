@@ -1,13 +1,15 @@
-import React from 'react'
-import { Text, View } from 'react-native'
-import styles from '../style/style'
+import React from 'react';
+import { Text, View } from 'react-native';
+import style from '../style/style';
+import Metrics from "../style/Metrics";
 
-export default function Scoreboard( {navigation }) {
+const Scoreboard = ({ playerName, totalPoints }) => {
   return (
     <View>
-      <Text>
-        Scoreboard will be here..
-      </Text>
+      <Text>Player Name: {playerName}</Text>
+      <Text>Total Points: {totalPoints}</Text>
     </View>
-  )
-}
+  );
+};
+
+export default Scoreboard;

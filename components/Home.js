@@ -24,15 +24,14 @@ export default function Home({ navigation }) {
             Keyboard.dismiss();
         }
     }
-
   return (
     <>
         <Header />
         <View>
             <MaterialCommunityIcons
-                name="information"
+                name="information-variant"
                 size={90}
-                color="steelblue"
+                color="black"
                 style={styles.information}
                 
                  
