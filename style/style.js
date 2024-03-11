@@ -6,13 +6,13 @@ export default StyleSheet.create({
     backgroundColor: '#fff'
   },
   header: {
-    marginTop: 30,
-    marginBottom: 15,
+    marginTop: 0,
+    marginBottom: 0,
     backgroundColor: 'skyblue',
     flexDirection: 'row',
   },
   footer: {
-    marginTop: 40,
+    marginTop: 25,
     backgroundColor: 'skyblue',
     flexDirection: 'row',
     
@@ -89,7 +89,7 @@ export default StyleSheet.create({
     textAlign: 'center',
     justifyContent: 'center',
     fontSize: 20,
-    marginTop: 50,
+    marginTop: 10,
     margin: 0
   },
 

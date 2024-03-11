@@ -13,6 +13,7 @@ import { Container, Row, Col } from 'react-native-flex-grid';
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import styles from '../style/style';
 import { FontAwesome5 } from '@expo/vector-icons';
+
 let board = [];
 
 export default function Gameboard({ navigation, route }) {
@@ -20,6 +21,8 @@ export default function Gameboard({ navigation, route }) {
   const [nbrOfThrowsLeft, setNbrOfThrowsLeft] = useState(NBR_OF_THROWS);
   const [status, setStatus] = useState("Throw Dices.");
   const [gameEndStatus, setGameEndStatus] = useState(false);
+  const [showDiceIcon, setShowDiceIcon] = useState(true);
+
 
   // If dices are selected or not
   const [selectedDices, setSelectedDices] =
@@ -42,6 +45,7 @@ export default function Gameboard({ navigation, route }) {
       setPlayerName(route.params.player);
     }
   }, [])
+
 
   const row = [];
   for (let dice = 0; dice < NBR_OF_DICES; dice++) {
@@ -133,6 +137,7 @@ export default function Gameboard({ navigation, route }) {
 
 
   const throwDices = () => {
+    setShowDiceIcon(false);
     let spots = [...diceSpots];
     for (let i = 0; i < NBR_OF_DICES; i++) {
       if (!selectedDices[i]) {
@@ -151,28 +156,34 @@ export default function Gameboard({ navigation, route }) {
 
   return (
     <>
-    <Header />
-    <View>
-      <Container>
-        <Row>{row}</Row>
-      </Container>
-      <FontAwesome5
-      name="dice"
-      size={90}
-      color="steelblue"
-      style={styles.information}/>
-
+      <Header />
+      <View>
+        <Container>
+          <Row style={styles.row}>{row}</Row>
+        </Container>
+        {showDiceIcon && ( // Conditionally render the FontAwesome5 icon based on the state
+          <FontAwesome5
+            name="dice"
+            size={90}
+            color="steelblue"
+            style={styles.information}
+          />
+        )}
       <Text style={styles.gametext}>Throws left: {nbrOfThrowsLeft}</Text>
       <Text style={styles.gametext}>{status}</Text>
+
       <Pressable style={styles.button}
         onPress={() => throwDices()}>
         <Text>THROW DICES</Text>
       </Pressable>
+
       <Text style={styles.gametotal}> Total: {dicePointsTotal.reduce((acc, curr) => acc + curr, 0)} </Text>
       <Text style={styles.gamebonus}> You are {BONUS_POINTS} points away from bonus.</Text>
+
       <Container>
         <Row>{pointsRow}</Row>
       </Container>
+
       <Container>
         <Row>{pointsToSelectRow}</Row>
       </Container>
