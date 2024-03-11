@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 import Metrics from "../style/Metrics";
-import { Font } from 'expo-font';
+
 
 
 export default StyleSheet.create({
