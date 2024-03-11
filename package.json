@@ -9,11 +9,14 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@expo-google-fonts/open-sans": "^0.2.3",
+    "@expo-google-fonts/tajawal": "^0.2.3",
     "@react-native-async-storage/async-storage": "^1.22.2",
     "@react-navigation/bottom-tabs": "^6.5.14",
     "@react-navigation/native": "^6.1.12",
     "@react-navigation/native-stack": "^6.9.20",
     "expo": "~50.0.8",
+    "expo-app-loading": "^2.1.1",
     "expo-font": "^11.10.3",
     "expo-status-bar": "~1.11.1",
     "react": "18.2.0",

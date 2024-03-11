@@ -2,27 +2,20 @@ import React, { useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
-import * as Font from 'expo-font';
 import Home from "./components/Home";
 import Gameboard from "./components/Gameboard";
 import Scoreboard from "./components/Scoreboard";
+import { useFonts } from "expo-font";
+
 
 const Tab = createBottomTabNavigator();
 
-const loadFonts = async () => {
-  try {
-    await Font.loadAsync({
-      'comic-sans': require('./assets/fonts/comic-sans.ttf'),
-    });
-  } catch (error) {
-    console.error("Error loading fonts:", error);
-  }
-};
 
 export default function App() {
-  useEffect(() => {
-    loadFonts();
-  }, []);
+    const [loaded] = useFonts({
+      Monsterrat: require("./assets/fonts/opensans.ttf"),
+    });
+
 
   return (
     <NavigationContainer>

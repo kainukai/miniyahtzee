@@ -5,7 +5,6 @@ import { Font } from 'expo-font';
 
 export default StyleSheet.create({
   container: {
-    fontFamily: "comic-sans",
     flex: 1,
     backgroundColor: '#fff'
   },
@@ -14,14 +13,14 @@ export default StyleSheet.create({
     marginBottom: 0,
     backgroundColor: 'red',
     flexDirection: 'row',
-    fontFamily: "comic-sans",
+
   },
 
   footer: {
     marginTop: 25,
     backgroundColor: 'red',
     flexDirection: 'row',
-    fontFamily: "comic-sans",
+ 
   },
   title: {
     color: '#fff',
@@ -30,7 +29,7 @@ export default StyleSheet.create({
     fontSize: 23,
     textAlign: 'center',
     margin: 10,
-    fontFamily: "comic-sans",
+
   },
   author: {
     color: '#fff',
@@ -39,13 +38,13 @@ export default StyleSheet.create({
     fontSize: 15,
     textAlign: 'center',
     margin: 10,
-    fontFamily: "comic-sans",
+  
   },
   gameboard: {
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-    fontFamily: "comic-sans",
+
   },
   gameinfo: {
     backgroundColor: '#fff',
@@ -53,8 +52,8 @@ export default StyleSheet.create({
     justifyContent: 'center',
     fontSize: 15,
     marginTop: 10,
-    margin: 15,
-    fontFamily: "comic-sans",
+    margin: 5,
+
     
   },
 
@@ -62,10 +61,10 @@ export default StyleSheet.create({
     backgroundColor: '#fff',
     textAlign: 'center',
     justifyContent: 'center',
-    fontSize: 25,
-    marginTop: 10,
+    fontSize: 20,
+    marginTop: 0,
     margin: 10,
-    fontFamily: "comic-sans",
+
   },
 
   gametext: {
@@ -75,7 +74,7 @@ export default StyleSheet.create({
     fontSize: 20,
     marginTop: 10,
     margin: 15,
-    fontFamily: "comic-sans",
+
   },
 
   gametotal: {
@@ -85,7 +84,7 @@ export default StyleSheet.create({
     fontSize: 25,
     marginTop: 10,
     margin: 15,
-    fontFamily: "comic-sans",
+   
   },
 
   gamebonus: {
@@ -95,7 +94,7 @@ export default StyleSheet.create({
     fontSize: 15,
     marginTop: 10,
     margin: 25,
-    fontFamily: "comic-sans",
+   
   },
 
   playerName: {
@@ -105,7 +104,7 @@ export default StyleSheet.create({
     fontSize: 20,
     marginTop: 10,
     margin: 0,
-    fontFamily: "comic-sans",
+    
   },
 
   row: {
@@ -124,20 +123,20 @@ export default StyleSheet.create({
     borderRadius: 15,
     justifyContent: 'center',
     alignItems: 'center',
-    fontFamily: "comic-sans",
+    
     
     
   },
   buttonText: {
     color:"white",
     fontSize: 20,
-    fontFamily: "comic-sans",
+    
   },
   information:{
     backgroundColor: '#fff',
     textAlign: 'center',
     justifyContent: 'center',
     paddingBottom: 20,
-    fontFamily: "comic-sans",
+    
   }
 });
