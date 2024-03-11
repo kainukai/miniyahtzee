@@ -5,18 +5,13 @@ import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import Home from "./components/Home";
 import Gameboard from "./components/Gameboard";
 import Scoreboard from "./components/Scoreboard";
-import { useFonts } from "expo-font";
+
 
 
 const Tab = createBottomTabNavigator();
 
 
 export default function App() {
-    const [loaded] = useFonts({
-      Monsterrat: require("./assets/fonts/opensans.ttf"),
-    });
-
-
   return (
     <NavigationContainer>
       <Tab.Navigator
