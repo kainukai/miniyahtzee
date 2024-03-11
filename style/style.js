@@ -44,7 +44,7 @@ export default StyleSheet.create({
     justifyContent: 'center',
     fontSize: 15,
     marginTop: 10,
-    margin: 10
+    margin: 15
   },
 
   gamerule: {
@@ -53,7 +53,44 @@ export default StyleSheet.create({
     justifyContent: 'center',
     fontSize: 25,
     marginTop: 10,
-    margin: 10
+    margin: 10,
+    
+  },
+
+  gametext: {
+    backgroundColor: '#fff',
+    textAlign: 'center',
+    justifyContent: 'center',
+    fontSize: 20,
+    marginTop: 10,
+    margin: 15
+  },
+
+  gametotal: {
+    backgroundColor: '#fff',
+    textAlign: 'center',
+    justifyContent: 'center',
+    fontSize: 25,
+    marginTop: 10,
+    margin: 15
+  },
+
+  gamebonus: {
+    backgroundColor: '#fff',
+    textAlign: 'center',
+    justifyContent: 'center',
+    fontSize: 15,
+    marginTop: 10,
+    margin: 25
+  },
+
+  playerName: {
+    backgroundColor: '#fff',
+    textAlign: 'center',
+    justifyContent: 'center',
+    fontSize: 20,
+    marginTop: 50,
+    margin: 0
   },
 
   row: {
@@ -82,5 +119,6 @@ export default StyleSheet.create({
     backgroundColor: '#fff',
     textAlign: 'center',
     justifyContent: 'center',
+    paddingBottom: 20,
   }
 });

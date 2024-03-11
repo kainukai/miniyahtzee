@@ -12,13 +12,13 @@ import {
 import { Container, Row, Col } from 'react-native-flex-grid';
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import styles from '../style/style';
-
+import { FontAwesome5 } from '@expo/vector-icons';
 let board = [];
 
 export default function Gameboard({ navigation, route }) {
 
   const [nbrOfThrowsLeft, setNbrOfThrowsLeft] = useState(NBR_OF_THROWS);
-  const [status, setStatus] = useState("Throw Dices");
+  const [status, setStatus] = useState("Throw Dices.");
   const [gameEndStatus, setGameEndStatus] = useState(false);
 
   // If dices are selected or not
@@ -66,11 +66,11 @@ export default function Gameboard({ navigation, route }) {
   const pointsRow = [];
   for (let spot = 0; spot < MAX_SPOT; spot++) {
     pointsRow.push(
-      <Col key={"pointsRow" + spot}>
-        <Text key={"pointsRow" + spot}>{getSpotTotal(spot)}</Text>
+      <Col key={"pointsRow" + spot} style={{ paddingHorizontal: 25 }}>
+        <Text key={"pointsRowText" + spot}>{getSpotTotal(spot)}</Text>
       </Col>
     );
-  }
+  }  
 
   const pointsToSelectRow = [];
   for (let diceButton = 0; diceButton < MAX_SPOT; diceButton++) {
@@ -156,19 +156,27 @@ export default function Gameboard({ navigation, route }) {
       <Container>
         <Row>{row}</Row>
       </Container>
-      <Text>Throws left: {nbrOfThrowsLeft}</Text>
-      <Text>{status}</Text>
-      <Pressable
+      <FontAwesome5
+      name="dice"
+      size={90}
+      color="steelblue"
+      style={styles.information}/>
+
+      <Text style={styles.gametext}>Throws left: {nbrOfThrowsLeft}</Text>
+      <Text style={styles.gametext}>{status}</Text>
+      <Pressable style={styles.button}
         onPress={() => throwDices()}>
         <Text>THROW DICES</Text>
       </Pressable>
+      <Text style={styles.gametotal}> Total: {dicePointsTotal.reduce((acc, curr) => acc + curr, 0)} </Text>
+      <Text style={styles.gamebonus}> You are {BONUS_POINTS} points away from bonus.</Text>
       <Container>
         <Row>{pointsRow}</Row>
       </Container>
       <Container>
         <Row>{pointsToSelectRow}</Row>
       </Container>
-      <Text>Player name: {playerName}</Text>
+      <Text style={styles.playerName}>Player name: {playerName}</Text>
     </View>
     <Footer />
     </>
